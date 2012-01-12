@@ -38,7 +38,7 @@ projects[media] = 1.0-rc2
 projects[linkedpa_features][type] = module
 projects[linkedpa_features][download][type] = git
 projects[linkedpa_features][download][url] = git@github.com:sardbaba/linkedpa_features.git
-projects[linkedpa][download][branch] = master
+projects[linkedpa_features][download][branch] = master
 
 
 ;  -  Patches  -
