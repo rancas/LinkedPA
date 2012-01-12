@@ -36,8 +36,9 @@ projects[media] = 1.0-rc2
 
 ;LinkedPA Features
 projects[linkedpa_features][type] = module
-projects[linkedpa_features][download][type] = get
-projects[linkedpa_features][download][url] = http://localhost/content_types_and_taxonomies-7.x-1.0-beta1.tar
+projects[linkedpa_features][download][type] = git
+projects[linkedpa_features][download][url] = git@github.com:sardbaba/linkedpa_features.git
+projects[linkedpa][download][branch] = master
 
 
 ;  -  Patches  -
