@@ -6,6 +6,8 @@ api = 2
 
 ; Main modules
 projects[ctools] = 1.0-rc1
+projects[entity] = 1.0-rc1
+projects[views] = 3.0 
 
 ; Features
 projects[features] = 1.0-beta6
