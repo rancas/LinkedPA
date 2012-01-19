@@ -41,7 +41,7 @@ dependencies[] = number
 dependencies[] = taxonomy
 
 ; Install the linkedpa modules and features.
-dependencies[] = content_types_and_taxonomies
-
+dependencies[] = lpa_feat_content_types_and_taxonomies
+dependencies[] = lpa_feat_themes_panel
 
 files[] = linkedpa.profile
