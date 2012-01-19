@@ -17,7 +17,7 @@ function linkedpa_form_install_configure_form_alter(&$form, $form_state) {
  * Implements of hook_install_tasks().
  */
 function linkedpa_install_tasks() {
-  linkedpa_config_vars();
+  //linkedpa_config_vars();
 
   $tasks = array(
     'linkedpa_import_vocabularies_batch' => array(
