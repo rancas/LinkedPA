@@ -27,10 +27,11 @@ dependencies[] = file
 dependencies[] = rdf
 
 ; Install contributed modules.
-dependencies[] = views_ui
-dependencies[] = taxonomy_manager
+dependencies[] = ctools
 dependencies[] = date
 dependencies[] = date_popup
+dependencies[] = diff
+dependencies[] = ds
 dependencies[] = entity
 dependencies[] = entityreference
 dependencies[] = features
@@ -38,7 +39,14 @@ dependencies[] = field_group
 dependencies[] = link
 dependencies[] = media
 dependencies[] = number
+dependencies[] = panels
+dependencies[] = panels_node
+dependencies[] = page_manager
 dependencies[] = taxonomy
+dependencies[] = taxonomy_manager
+dependencies[] = transliteration
+dependencies[] = views
+dependencies[] = views_ui
 
 ; Install the linkedpa modules and features.
 dependencies[] = lpa_feat_content_types_and_taxonomies
