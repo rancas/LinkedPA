@@ -56,7 +56,6 @@ function _get_nodes_and_menu_items() {
       'menus' => array('main-menu'),
     ),
 
-
     'note-legali' => array(
       'type' => 'pagina',
       'uid' => 1,
@@ -64,7 +63,6 @@ function _get_nodes_and_menu_items() {
       'title' => 'Note legali',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('footer-menu'),
-      'field_tipo_pagina' => 'Generica',
     ),
     'mappa-del-sito' => array(
       'type' => 'pagina',
@@ -73,7 +71,6 @@ function _get_nodes_and_menu_items() {
       'title' => 'Note legali',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('footer-menu'),
-      'field_tipo_pagina' => 'Generica',
     ),
     'privacy' => array(
       'type' => 'pagina',
@@ -82,7 +79,6 @@ function _get_nodes_and_menu_items() {
       'title' => 'Privacy',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('footer-menu'),
-      'field_tipo_pagina' => 'Generica',
     ),
     'credits' => array(
       'type' => 'pagina',
@@ -91,7 +87,6 @@ function _get_nodes_and_menu_items() {
       'title' => 'Credits',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('footer-menu'),
-      'field_tipo_pagina' => 'Generica',
     ),
     'user' => array(
       'path' => 'user',
