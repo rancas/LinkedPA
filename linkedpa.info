@@ -21,14 +21,15 @@ dependencies[] = taxonomy
 dependencies[] = dblog
 dependencies[] = shortcut
 dependencies[] = toolbar
-dependencies[] = overlay
 dependencies[] = field_ui
 dependencies[] = file
 dependencies[] = rdf
 
 ; Install contributed modules.
 dependencies[] = ctools
+dependencies[] = ctools_custom_content
 dependencies[] = date
+dependencies[] = date_api
 dependencies[] = date_popup
 dependencies[] = diff
 dependencies[] = ds
@@ -36,17 +37,23 @@ dependencies[] = entity
 dependencies[] = entityreference
 dependencies[] = features
 dependencies[] = field_group
+dependencies[] = file_entity
 dependencies[] = link
 dependencies[] = media
 dependencies[] = number
-dependencies[] = panels
-dependencies[] = panels_node
 dependencies[] = page_manager
+dependencies[] = panels
+dependencies[] = panels_mini
+dependencies[] = panels_node
+dependencies[] = pathauto
+dependencies[] = strongarm
 dependencies[] = taxonomy
 dependencies[] = taxonomy_manager
+dependencies[] = token
 dependencies[] = transliteration
 dependencies[] = views
 dependencies[] = views_ui
+dependencies[] = views_content
 
 ; Install the linkedpa modules and features.
 dependencies[] = lpa_feat_content_types_and_taxonomies

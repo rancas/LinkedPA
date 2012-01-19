@@ -2,33 +2,35 @@
 core = 7.x
 api = 2
 
+
 ;  -  Modules  -
+projects[ctools][subdir] = contrib
+projects[ctools][version] = 1.0-rc1
+projects[date][subdir] = contrib
+projects[date][version] = 2.0-rc1
+projects[diff][subdir] = contrib
+projects[diff][version] = 2.0
+projects[ds][subdir] = contrib
+projects[ds][version] = 1.4
+projects[entity][subdir] = contrib
+projects[entity][version] = 1.0-rc1
+projects[entityreference][subdir] = contrib
+projects[entityreference][version] = 1.0-beta3
+projects[field_group][subdir] = contrib
+projects[field_group][version] = 1.1
+projects[features][subdir] = contrib
+projects[features][version] = 1.0-beta6
+projects[panels][subdir] = contrib
+projects[panels][version] = 3.0-alpha3
+projects[strongarm][subdir] = contrib
+projects[strongarm][version] = 2.0-beta5
+projects[taxonomy_csv][subdir] = contrib
+projects[taxonomy_csv][version] = 5.7
+projects[taxonomy_manager][subdir] = contrib
+projects[taxonomy_manager][version] = 1.0-beta2
+projects[views][subdir] = contrib
+projects[views][version] = 3.0
 
-; Main modules
-projects[ctools] = 1.0-rc1
-projects[entity] = 1.0-rc1
-projects[views] = 3.0
-projects[panels] = 3.0-alpha
-
-; Features
-projects[features] = 1.0-beta6
-
-projects[diff] = 2.0
-projects[strongarm] = 2.0-beta5
-
-;Field types
-projects[entityreference] = 1.0-beta3
-projects[field_group] = 1.1 
-projects[link] = 1.0
-projects[date] = 2.0-rc1
-
-
-;Taxonomy utils
-projects[taxonomy_csv] = 5.6
-projects[taxonomy_manager] = 1.0-beta2
-
-
-;Web services
 
 ;Misc
 projects[colorbox] = 1.2
