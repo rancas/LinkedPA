@@ -1,6 +1,8 @@
 <?php
 // $Id: standard.profile,v 1.2 2010/07/22 16:16:42 dries Exp $
 
+require_once 'linkedpa.inc';
+
 /**
  * Implements hook_form_FORM_ID_alter().
  *
@@ -18,6 +20,13 @@ function linkedpa_install_tasks() {
   $tasks = array(
     'linkedpa_import_vocabularies_batch' => array(
       'display_name' => st('Import terms'),
+      'display' => TRUE,
+      'type' => 'batch',
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+    ),
+    'linkedpa_create_menus' => array(),
+    'linkedpa_batch_processing' => array(
+      'display_name' => st('Install LinkedPA'),
       'display' => TRUE,
       'type' => 'batch',
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
@@ -105,4 +114,123 @@ function recruiter_import_vocabularies_finished($success, $results, $operations)
   }
   $message .= t("Import finished");
   drupal_set_message($message);
+}
+
+
+/**
+ * Create menus.
+ */
+function linkedpa_create_menus() {
+  $menus = _get_menus();
+  foreach ($menus as $menu) {
+    if (!isset($menu['description'])) $menu['description'] = '';
+    menu_save($menu);
+  }
+}
+
+function linkedpa_batch_processing(&$install_state) {
+  return array(
+    'title' => st('Create basic nodes and menu items'),
+    'operations' => array(
+      array('linkedpa_batch_create_nodes_batch', array()),
+      array('linkedpa_batch_create_menu_items_batch', array()),
+    ),
+  );
+}
+
+/**
+ * Create nodes.
+ */
+function linkedpa_batch_create_nodes_batch(&$context) {
+ if (empty($context['sandbox'])) {
+    $context['sandbox']['items'] = _get_nodes_and_menu_items();
+    $context['sandbox']['keys'] = array_keys($context['sandbox']['items']);
+    $context['sandbox']['progress'] = 0;
+    $context['sandbox']['max'] = count($context['sandbox']['keys']);
+  }
+
+  $items =& $context['sandbox']['items'];
+  $key = $context['sandbox']['keys'][$context['sandbox']['progress']];
+
+  $item_arr = $items[$key];
+
+  // Create and save node object
+  if (isset($item_arr['type'])) {
+    $node = new stdClass();
+    $node->type = $item_arr['type'];
+    node_object_prepare($node);
+
+    // Initialize node fields
+    $node->title = $item_arr['title'];
+    $node->language = LANGUAGE_NONE;
+    $node->uid = $item_arr['uid'];
+    $node->title_field[$node->language][0]['value'] =  $item_arr['title'];
+    $node->body[$node->language][0]['value'] =  $item_arr['body'];
+    $node->body[$node->language][0]['summary'] = $item_arr['body'];
+    $node->body[$node->language][0]['format'] = 'filtered_html';
+    $node->path = array('pathauto' => 0, 'alias' => $item_arr['path']);
+
+    // Save node
+    if($node = node_submit($node)) { // Prepare node for saving
+      node_save($node);
+      $item_arr['path'] = 'node/' . $node->nid;
+      $items[$key] = $item_arr;
+    }
+  }
+
+  $context['sandbox']['progress']++;
+
+  if ($context['sandbox']['progress'] != $context['sandbox']['max']) {
+    $context['finished'] = $context['sandbox']['progress'] / $context['sandbox']['max'];
+  } else {
+    variable_set('linkedpa_nodes_and_menu_items', $items);
+  }
+}
+
+
+/**
+ * Create menu items.
+ */
+function linkedpa_batch_create_menu_items_batch(&$context) {
+  if (empty($context['sandbox'])) {
+    $context['sandbox']['items'] = variable_get('linkedpa_nodes_and_menu_items', array());
+    $context['sandbox']['keys'] = array_keys($context['sandbox']['items']);
+    $context['sandbox']['progress'] = 0;
+    $context['sandbox']['max'] = count($context['sandbox']['keys']);
+  }
+
+  $items =& $context['sandbox']['items'];
+  $key = $context['sandbox']['keys'][$context['sandbox']['progress']];
+
+  $item_arr = $items[$key];
+
+  // Create menu items
+  if (isset($item_arr['menus'])) {
+    foreach ($item_arr['menus'] as $menu) {
+      $item = array(
+        'link_title' =>  $item_arr['title'],
+        'link_path' => $item_arr['path'],
+        'weight' => isset($item_arr['weight']) ? $item_arr['weight'] : 0,
+      );
+      $item['menu_name'] = $menu;
+      if (isset($item_arr['parent']) && isset($items[$item_arr['parent']][$menu . '.mlid'])) {
+        $item['plid'] = $items[$item_arr['parent']][$menu . '.mlid'];
+      } else {
+        $item['expanded'] = true;
+      }
+      if ($mlid = menu_link_save($item)) {
+        $items[$key][$menu . '.mlid'] = $mlid;
+      }
+      unset($item);
+    }
+  }
+
+  $context['sandbox']['progress']++;
+
+  if ($context['sandbox']['progress'] != $context['sandbox']['max']) {
+    $context['finished'] = $context['sandbox']['progress'] / $context['sandbox']['max'];
+  } else {
+    menu_rebuild();
+    variable_del('linkedpa_nodes_and_menu_items');
+  }
 }
