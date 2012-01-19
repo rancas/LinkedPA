@@ -17,6 +17,8 @@ function linkedpa_form_install_configure_form_alter(&$form, $form_state) {
  * Implements of hook_install_tasks().
  */
 function linkedpa_install_tasks() {
+  linkedpa_config_vars();
+
   $tasks = array(
     'linkedpa_import_vocabularies_batch' => array(
       'display_name' => st('Import terms'),
@@ -33,6 +35,14 @@ function linkedpa_install_tasks() {
     ),
   );
   return $tasks;
+}
+
+function linkedpa_config_vars() {
+  // Set default homepage
+  variable_set('site_frontpage', 'frontpage');
+      
+  // Keep errors in the log and off the screen
+  variable_set('error_level', 0);
 }
 
 /**
@@ -107,7 +117,7 @@ function linkedpa_import_vocabulary($voc, &$context) {
 /**
  * Prints message after batch is finished
  */
-function recruiter_import_vocabularies_finished($success, $results, $operations) {
+function linkedpa_import_vocabularies_finished($success, $results, $operations) {
   $message = "";
   if ($success) {
     $message .= theme('item_list', array('items' => $results));

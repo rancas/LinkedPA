@@ -5,7 +5,13 @@
  */
 function _get_menus() {
   // Define new menus
-  $menus = array();
+  $menus = array(
+    'footer' => array(
+	'menu_name' => 'footer-menu',
+	'title' => 'Footer menu',
+	'description' => 'il menu del footer'
+	),
+  );
   return $menus;
 }
 
