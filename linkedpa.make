@@ -7,7 +7,8 @@ api = 2
 ; Main modules
 projects[ctools] = 1.0-rc1
 projects[entity] = 1.0-rc1
-projects[views] = 3.0 
+projects[views] = 3.0
+projects[panels] = 3.0-alpha
 
 ; Features
 projects[features] = 1.0-beta6
@@ -42,15 +43,12 @@ projects[linkedpa_features][download][branch] = master
 
 
 ;  -  Patches  -
-
 ; http://drupal.org/node/1079782
 ; Add support hook_entity_property_info().
 ;projects[link][patch][] = "http://drupal.org/files/issues/1079782-link-entity_property-7.patch"
 
 
 ;  -  Libraries  -
-
-
 ; Add the colorbox library.
 libraries[colorbox][download][type] = "get"
 libraries[colorbox][download][url] = "http://jacklmoore.com/colorbox/colorbox.zip"
