@@ -55,18 +55,50 @@ function _get_nodes_and_menu_items() {
       'parent' => 'education',
       'menus' => array('main-menu'),
     ),
-    'user/login' => array(
-      'path' => 'user/login',
-      'title' => 'Log in',
-      'weight' => -20,
-      'menus' => array('user-menu'),
+
+
+    'note-legali' => array(
+      'type' => 'pagina',
+      'uid' => 1,
+      'path' => 'note-legali',
+      'title' => 'Note legali',
+      'body' => '<p>Puoi modificare questo testo di esempio.</p>',
+      'menus' => array('footer-menu'),
+      'field_tipo_pagina' => 'Generica',
     ),
-    'user/register' => array(
-      'path' => 'user/register',
-      'title' => 'Register',
-      'weight' => -15,
-      'menus' => array('user-menu'),
+    'mappa-del-sito' => array(
+      'type' => 'pagina',
+      'uid' => 1,
+      'path' => 'mappa-del-sito',
+      'title' => 'Note legali',
+      'body' => '<p>Puoi modificare questo testo di esempio.</p>',
+      'menus' => array('footer-menu'),
+      'field_tipo_pagina' => 'Generica',
     ),
+    'privacy' => array(
+      'type' => 'pagina',
+      'uid' => 1,
+      'path' => 'privacy',
+      'title' => 'Privacy',
+      'body' => '<p>Puoi modificare questo testo di esempio.</p>',
+      'menus' => array('footer-menu'),
+      'field_tipo_pagina' => 'Generica',
+    ),
+    'credits' => array(
+      'type' => 'pagina',
+      'uid' => 1,
+      'path' => 'credits',
+      'title' => 'Credits',
+      'body' => '<p>Puoi modificare questo testo di esempio.</p>',
+      'menus' => array('footer-menu'),
+      'field_tipo_pagina' => 'Generica',
+    ),
+    'user' => array(
+      'path' => 'user',
+      'title' => 'Area riservata',
+      'menus' => array('footer-menu'),
+    ),
+
   );
   return $items;
 }
