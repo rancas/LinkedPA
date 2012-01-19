@@ -81,7 +81,7 @@ function linkedpa_import_vocabulary($voc, &$context) {
   $import_dir =  dirname(__FILE__) . '/taxonomy_import/';
 
   // Use Taxonomy CSV to import terms from a file.
-  $module_dir = dirname(__FILE__) . '/modules/taxonomy_csv';
+  $module_dir = dirname(__FILE__) . '/modules/contrib/taxonomy_csv';
   require_once("$module_dir/import/taxonomy_csv.import.api.inc");
 
   // Import terms for each voc, where a .csv file exits.
