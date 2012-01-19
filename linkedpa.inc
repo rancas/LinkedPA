@@ -74,7 +74,7 @@ function _get_nodes_and_menu_items() {
       'type' => 'pagina',
       'uid' => 1,
       'path' => 'mappa-del-sito',
-      'title' => 'Note legali',
+      'title' => 'Mappa del sito,
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('footer-menu'),
     ),
