@@ -33,7 +33,6 @@ function _get_nodes_and_menu_items() {
       'title' => 'Il Comune',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('main-menu'),
-      'field_tipo_pagina' => 'Generica',
     ),
     'urp' => array(
       'type' => 'pagina',
@@ -42,7 +41,6 @@ function _get_nodes_and_menu_items() {
       'title' => 'URP',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('main-menu'),
-      'field_tipo_pagina' => array('Generica'),
     ),
     'trasparenza' => array(
       'type' => 'pagina',
@@ -51,7 +49,6 @@ function _get_nodes_and_menu_items() {
       'title' => 'Trasparenza',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('main-menu'),
-      'field_tipo_pagina' => 'Generica',
     ),
     'trasparenza/assenze-personale-dipendente' => array(
       'type' => 'pagina',
@@ -61,7 +58,6 @@ function _get_nodes_and_menu_items() {
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'parent' => 'trasparenza',
       'menus' => array('main-menu'),
-      'field_tipo_pagina' => 'Generica',
     ),
     'albo-pretorio' => array(
       'type' => 'pagina',
@@ -70,7 +66,6 @@ function _get_nodes_and_menu_items() {
       'title' => 'Albo Pretorio',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('main-menu'),
-      'field_tipo_pagina' => 'Generica',
     ),
     'contatti' => array(
       'type' => 'pagina',
@@ -79,7 +74,6 @@ function _get_nodes_and_menu_items() {
       'title' => 'Contatti',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('main-menu'),
-      'field_tipo_pagina' => 'Generica',
     ),
     'note-legali' => array(
       'type' => 'pagina',
@@ -88,7 +82,6 @@ function _get_nodes_and_menu_items() {
       'title' => 'Note legali',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('footer-menu'),
-      'field_tipo_pagina' => 'Generica',
     ),
     'mappa-del-sito' => array(
       'type' => 'pagina',
@@ -97,7 +90,6 @@ function _get_nodes_and_menu_items() {
       'title' => 'Mappa del sito',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('footer-menu'),
-      'field_tipo_pagina' => 'Generica',
     ),
     'privacy' => array(
       'type' => 'pagina',
@@ -106,7 +98,6 @@ function _get_nodes_and_menu_items() {
       'title' => 'Privacy',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('footer-menu'),
-      'field_tipo_pagina' => 'Generica',
     ),
     'credits' => array(
       'type' => 'pagina',
@@ -115,13 +106,12 @@ function _get_nodes_and_menu_items() {
       'title' => 'Credits',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('footer-menu'),
-      'field_tipo_pagina' => 'Generica',
+      //'field_tipo_pagina' => 'Generica', //TODO non funzia...
     ),
     'user' => array(
       'path' => 'user',
       'title' => 'Area riservata',
       'menus' => array('footer-menu'),
-      'field_tipo_pagina' => 'Generica',
     ),
 
   );

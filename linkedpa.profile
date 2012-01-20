@@ -102,6 +102,8 @@ function linkedpa_config_vars() {
   variable_set('site_frontpage', 'frontpage');
 
   // Set default timezone
+  /* il Warning: "The Date API requires that you set up the admin/config/regional/settings site timezone and
+   first day of week settings...." continua ad esserci nonostante vengano correttamente settati i parametri... */
   variable_set('site_default_country', 'IT');
   variable_set('date_default_timezone', 'Europe/Rome');
   variable_set('date_first_day', '1'); // Monday
