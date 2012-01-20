@@ -8,8 +8,8 @@ api = 2
 projects[ctools][subdir] = contrib
 projects[ctools][version] = 1.0-rc1
 
-projects[contex][subdir] = contrib
-projects[contex][version] = 3.0-beta2
+projects[context][subdir] = contrib
+projects[context][version] = 3.0-beta2
 
 projects[date][subdir] = contrib
 projects[date][version] = 2.0-rc1
