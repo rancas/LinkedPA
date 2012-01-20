@@ -8,6 +8,8 @@ projects[ctools][subdir] = contrib
 projects[ctools][version] = 1.0-rc1
 projects[date][subdir] = contrib
 projects[date][version] = 2.0-rc1
+projects[devel][subdir] = contrib
+projects[devel][version] = 1.2
 projects[diff][subdir] = contrib
 projects[diff][version] = 2.0
 projects[ds][subdir] = contrib
@@ -38,6 +40,8 @@ projects[transliteration][subdir] = contrib
 projects[transliteration][version] = 3.0
 projects[views][subdir] = contrib
 projects[views][version] = 3.0
+projects[views_bulk_operations][subdir] = contrib
+projects[views_bulk_operations][version] = 3.0-beta3
 
 
 ;Misc

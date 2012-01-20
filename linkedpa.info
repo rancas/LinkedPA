@@ -31,6 +31,7 @@ dependencies[] = ctools_custom_content
 dependencies[] = date
 dependencies[] = date_api
 dependencies[] = date_popup
+dependencies[] = devel
 dependencies[] = diff
 dependencies[] = ds
 dependencies[] = entity
@@ -52,8 +53,9 @@ dependencies[] = taxonomy_manager
 dependencies[] = token
 dependencies[] = transliteration
 dependencies[] = views
-dependencies[] = views_ui
+dependencies[] = views_bulk_operations
 dependencies[] = views_content
+dependencies[] = views_ui
 
 ; Install the linkedpa modules and features.
 dependencies[] = lpa_feat_content_types_and_taxonomies
