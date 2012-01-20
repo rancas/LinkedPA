@@ -24,6 +24,8 @@ projects[features][subdir] = contrib
 projects[features][version] = 1.0-beta6
 projects[link][subdir] = contrib
 projects[link][version] = 1.0
+projects[media][subdir] = contrib
+projects[media][version] = 1.0-rc2
 projects[panels][subdir] = contrib
 projects[panels][version] = 3.0-alpha3
 projects[pathauto][subdir] = contrib
@@ -44,23 +46,16 @@ projects[views_bulk_operations][subdir] = contrib
 projects[views_bulk_operations][version] = 3.0-beta3
 
 
-;Misc
-projects[colorbox] = 1.2
-projects[media] = 1.0-rc2
-
-
 ;LinkedPA Features
 projects[linkedpa_features][type] = module
 projects[linkedpa_features][download][type] = git
 projects[linkedpa_features][download][url] = git@github.com:sardbaba/linkedpa_features.git
 projects[linkedpa_features][download][branch] = master
 
-
 ;  -  Patches  -
 ; http://drupal.org/node/1079782
 ; Add support hook_entity_property_info().
 ;projects[link][patch][] = "http://drupal.org/files/issues/1079782-link-entity_property-7.patch"
-
 
 ;  -  Libraries  -
 ; Add the colorbox library.

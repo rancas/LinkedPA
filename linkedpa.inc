@@ -69,6 +69,7 @@ function _get_nodes_and_menu_items() {
       'title' => 'Note legali',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('footer-menu'),
+      'field_tipo_pagina' => 'Generica',
     ),
     'mappa-del-sito' => array(
       'type' => 'pagina',
