@@ -6,6 +6,11 @@
 function _get_menus() {
   // Define new menus
   $menus = array(
+    'horizontal' => array(
+	'menu_name' => 'horizontal-menu',
+	'title' => 'Horizontal menu',
+	'description' => 'il menu orizzontale'
+	),
     'footer' => array(
 	'menu_name' => 'footer-menu',
 	'title' => 'Footer menu',

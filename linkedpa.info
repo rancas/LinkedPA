@@ -26,10 +26,11 @@ dependencies[] = file
 dependencies[] = rdf
 
 ; Install contributed modules.
-dependencies[] = contex
-dependencies[] = contex_ui
 dependencies[] = ctools
 dependencies[] = ctools_custom_content
+; contex requires ctools and must be put after it
+dependencies[] = contex
+dependencies[] = contex_ui
 dependencies[] = date
 dependencies[] = date_api
 dependencies[] = date_popup
@@ -62,7 +63,10 @@ dependencies[] = views_ui
 ; Install the linkedpa modules and features.
 dependencies[] = lpa_feat_content_types_and_taxonomies
 dependencies[] = lpa_feat_themes_panel
-
+dependencies[] = lpa_feat_home_page_views
+dependencies[] = lpa_feat_internal_views
+dependencies[] = lpa_feat_blocchi_statici
+dependencies[] = lpa_feat_home_blocks
 
 
 files[] = linkedpa.profile
