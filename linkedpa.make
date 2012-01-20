@@ -5,6 +5,9 @@ api = 2
 
 ;  -  Modules  -
 
+projects[contex][subdir] = contrib
+projects[contex][version] = 3.0-beta2
+
 projects[ctools][subdir] = contrib
 projects[ctools][version] = 1.0-rc1
 

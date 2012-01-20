@@ -26,6 +26,8 @@ dependencies[] = file
 dependencies[] = rdf
 
 ; Install contributed modules.
+dependencies[] = contex
+dependencies[] = contex_ui
 dependencies[] = ctools
 dependencies[] = ctools_custom_content
 dependencies[] = date
