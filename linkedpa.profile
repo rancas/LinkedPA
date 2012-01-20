@@ -37,6 +37,62 @@ function linkedpa_install_tasks() {
 }
 
 function linkedpa_config_vars() {
+  // Add text formats. -- from D7Standard
+  $filtered_html_format = array(
+    'format' => 'filtered_html',
+    'name' => 'Filtered HTML',
+    'weight' => 0,
+    'filters' => array(
+      // URL filter.
+      'filter_url' => array(
+        'weight' => 0,
+        'status' => 1,
+      ),
+      // HTML filter.
+      'filter_html' => array(
+        'weight' => 1,
+        'status' => 1,
+      ),
+      // Line break filter.
+      'filter_autop' => array(
+        'weight' => 2,
+        'status' => 1,
+      ),
+      // HTML corrector filter.
+      'filter_htmlcorrector' => array(
+        'weight' => 10,
+        'status' => 1,
+      ),
+    ),
+  );
+  $filtered_html_format = (object) $filtered_html_format;
+  filter_format_save($filtered_html_format);
+
+  $full_html_format = array(
+    'format' => 'full_html',
+    'name' => 'Full HTML',
+    'weight' => 1,
+    'filters' => array(
+      // URL filter.
+      'filter_url' => array(
+        'weight' => 0,
+        'status' => 1,
+      ),
+      // Line break filter.
+      'filter_autop' => array(
+        'weight' => 1,
+        'status' => 1,
+      ),
+      // HTML corrector filter.
+      'filter_htmlcorrector' => array(
+        'weight' => 10,
+        'status' => 1,
+      ),
+    ),
+  );
+  $full_html_format = (object) $full_html_format;
+  filter_format_save($full_html_format);
+
   // theme
   theme_enable(array('linkedpatheme', 'seven'));
   variable_set('theme_default', 'linkedpatheme');
@@ -44,6 +100,9 @@ function linkedpa_config_vars() {
 
   // Set default homepage
   variable_set('site_frontpage', 'frontpage');
+
+  // Set default timezone
+  variable_set('date_default_timezone', 'Europe/Rome');
       
   // Keep errors in the log and off the screen
   variable_set('error_level', 0);
