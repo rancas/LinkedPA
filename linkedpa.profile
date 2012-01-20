@@ -102,9 +102,9 @@ function linkedpa_config_vars() {
   variable_set('site_frontpage', 'frontpage');
 
   // Set default timezone
-  variable_set('site_default_country', 'Italy');
+  variable_set('site_default_country', 'IT');
   variable_set('date_default_timezone', 'Europe/Rome');
-  variable_set('date_first_day', 'Monday');
+  variable_set('date_first_day', '1'); // Monday
       
   // Keep errors in the log and off the screen
   variable_set('error_level', 0);

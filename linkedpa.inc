@@ -42,7 +42,7 @@ function _get_nodes_and_menu_items() {
       'title' => 'URP',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('main-menu'),
-      'field_tipo_pagina' => 11,
+      'field_tipo_pagina' => array('Generica'),
     ),
     'trasparenza' => array(
       'type' => 'pagina',
