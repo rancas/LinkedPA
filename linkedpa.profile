@@ -17,8 +17,6 @@ function linkedpa_form_install_configure_form_alter(&$form, $form_state) {
  * Implements of hook_install_tasks().
  */
 function linkedpa_install_tasks() {
-  //linkedpa_config_vars();
-
   $tasks = array(
     'linkedpa_import_vocabularies_batch' => array(
       'display_name' => st('Import terms'),
@@ -33,11 +31,17 @@ function linkedpa_install_tasks() {
       'type' => 'batch',
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
     ),
+    'linkedpa_config_vars' => array(),
   );
   return $tasks;
 }
 
 function linkedpa_config_vars() {
+  // theme
+  theme_enable(array('linkedpatheme', 'seven'));
+  variable_set('theme_default', 'linkedpatheme');
+  variable_set('admin_theme', 'seven');
+
   // Set default homepage
   variable_set('site_frontpage', 'frontpage');
       
