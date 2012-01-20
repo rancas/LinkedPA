@@ -46,11 +46,15 @@ projects[views_bulk_operations][subdir] = contrib
 projects[views_bulk_operations][version] = 3.0-beta3
 
 
-;LinkedPA Features
+;  -  LinkedPA  -
 projects[linkedpa_features][type] = module
 projects[linkedpa_features][download][type] = git
 projects[linkedpa_features][download][url] = git@github.com:sardbaba/linkedpa_features.git
 projects[linkedpa_features][download][branch] = master
+projects[linkedpa_theme][type] = theme
+projects[linkedpa_theme][download][type] = git
+projects[linkedpa_theme][download][url] = git@github.com:sardbaba/linkedpa_theme.git
+projects[linkedpa_theme][download][branch] = master
 
 ;  -  Patches  -
 ; http://drupal.org/node/1079782
