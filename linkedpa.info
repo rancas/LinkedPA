@@ -60,5 +60,6 @@ dependencies[] = views_ui
 ; Install the linkedpa modules and features.
 dependencies[] = lpa_feat_content_types_and_taxonomies
 dependencies[] = lpa_feat_themes_panel
+dependencies[] = linkedpatheme
 
 files[] = linkedpa.profile
