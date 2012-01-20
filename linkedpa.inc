@@ -39,10 +39,10 @@ function _get_nodes_and_menu_items() {
       'type' => 'pagina',
       'uid' => 1,
       'path' => 'urp',
-      'title' => 'Ufficio per le Relazioni con il Pubblico',
+      'title' => 'URP',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('main-menu'),
-      'field_tipo_pagina' => 'Generica',
+      'field_tipo_pagina' => 11,
     ),
     'trasparenza' => array(
       'type' => 'pagina',
