@@ -10,7 +10,7 @@ require_once 'linkedpa.inc';
  */
 function linkedpa_form_install_configure_form_alter(&$form, $form_state) {
   // Pre-populate the site name with the server name.
-  $form['site_information']['site_name']['#default_value'] = t('eq-linkedpa');
+  $form['site_information']['site_name']['#default_value'] = t('LinkedPA');
 }
 
 /**
@@ -96,6 +96,13 @@ function linkedpa_import_vocabulary($voc, &$context) {
 
   // Import terms for each voc, where a .csv file exits.
   $filename = $import_dir . $voc->machine_name . '.csv';
+
+$myFile = "testFile.txt";
+$fh = fopen($myFile, 'a') or die("can't open file");
+
+fwrite($fh, "add " . $filename . "\n");
+fclose($fh);
+
   if (!file_exists($filename)) {
     return;
   }
