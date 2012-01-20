@@ -62,10 +62,10 @@ dependencies[] = views_ui
 ; Install the linkedpa modules and features.
 dependencies[] = lpa_feat_content_types_and_taxonomies
 dependencies[] = lpa_feat_themes_panel
-dependencies[] = lpa_feat_blocchi_statici
-dependencies[] = lpa_feat_home_blocks
 dependencies[] = lpa_feat_home_page_views
 dependencies[] = lpa_feat_internal_views
+dependencies[] = lpa_feat_blocchi_statici
+dependencies[] = lpa_feat_home_blocks
 
 
 files[] = linkedpa.profile
