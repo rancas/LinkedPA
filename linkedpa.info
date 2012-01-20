@@ -30,11 +30,12 @@ dependencies[] = search
 dependencies[] = system
 
 ; Install contributed modules.
+dependencies[] = context
+dependencies[] = context_ui
 dependencies[] = ctools
 dependencies[] = ctools_custom_content
 ; contex requires ctools and must be put after it
-dependencies[] = context
-dependencies[] = context_ui
+
 dependencies[] = date
 dependencies[] = date_api
 dependencies[] = date_popup
