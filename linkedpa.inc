@@ -26,47 +26,55 @@ function _get_menus() {
  */
 function _get_nodes_and_menu_items() {
  $items = array(
-    'about' => array(
+    'il-comune' => array(
       'type' => 'pagina',
       'uid' => 1,
-      'path' => 'about',
-      'title' => 'About us',
-      'body' => '<p>You can edit this text.</p>',
-      'menus' => array('main-menu'),
+      'path' => 'il-comune',
+      'title' => 'Il Comune',
+      'body' => '<p>Puoi modificare questo testo di esempio.</p>',
+      'menus' => array('horizontal-menu'),
     ),
-    'contact' => array(
-      'path' => 'contact',
-      'title' => 'Contact us',
-      'parent' => 'about',
-      'menus' => array('main-menu'),
-    ),
-    'education' => array(
+    'urp' => array(
       'type' => 'pagina',
       'uid' => 1,
-      'path' => 'education',
-      'title' => 'Education',
-      'body' => '<p>You can edit this text.</p>',
-      'menus' => array('main-menu'),
+      'path' => 'urp',
+      'title' => 'Ufficio per le Relazioni con il Pubblico',
+      'body' => '<p>Puoi modificare questo testo di esempio.</p>',
+      'menus' => array('horizontal-menu'),
     ),
-    'education/undergraduate' => array(
+    'trasparenza' => array(
       'type' => 'pagina',
       'uid' => 1,
-      'path' => 'education/undergraduate',
-      'title' => 'Undergraduate',
-      'body' => '<p>You can edit this text.</p>',
-      'parent' => 'education',
-      'menus' => array('main-menu'),
+      'path' => 'trasparenza',
+      'title' => 'Trasparenza',
+      'body' => '<p>Puoi modificare questo testo di esempio.</p>',
+      'menus' => array('horizontal-menu'),
     ),
-    'education/masters' => array(
+    'trasparenza/assenze-personale-dipendente' => array(
       'type' => 'pagina',
       'uid' => 1,
-      'path' => 'education/masters',
-      'title' => 'Masters',
-      'body' => '<p>You can edit this text.</p>',
-      'parent' => 'education',
-      'menus' => array('main-menu'),
+      'path' => 'trasparenza/assenze-personale-dipendente',
+      'title' => 'Assenze personale dipendente',
+      'body' => '<p>Puoi modificare questo testo di esempio.</p>',
+      'parent' => 'trasparenza',
+      'menus' => array('horizontal-menu'),
     ),
-
+    'albo-pretorio' => array(
+      'type' => 'pagina',
+      'uid' => 1,
+      'path' => 'albo-pretorio',
+      'title' => 'Albo Pretorio',
+      'body' => '<p>Puoi modificare questo testo di esempio.</p>',
+      'menus' => array('horizontal-menu'),
+    ),
+    'contatti' => array(
+      'type' => 'pagina',
+      'uid' => 1,
+      'path' => 'contatti',
+      'title' => 'Contatti',
+      'body' => '<p>Puoi modificare questo testo di esempio.</p>',
+      'menus' => array('horizontal-menu'),
+    ),
     'note-legali' => array(
       'type' => 'pagina',
       'uid' => 1,
@@ -74,7 +82,6 @@ function _get_nodes_and_menu_items() {
       'title' => 'Note legali',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('footer-menu'),
-      'field_tipo_pagina' => 'Generica',
     ),
     'mappa-del-sito' => array(
       'type' => 'pagina',

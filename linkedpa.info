@@ -21,9 +21,13 @@ dependencies[] = taxonomy
 dependencies[] = dblog
 dependencies[] = shortcut
 dependencies[] = toolbar
+dependencies[] = field
 dependencies[] = field_ui
+dependencies[] = field_sql_storage
 dependencies[] = file
 dependencies[] = rdf
+dependencies[] = search
+dependencies[] = system
 
 ; Install contributed modules.
 dependencies[] = ctools
@@ -65,8 +69,8 @@ dependencies[] = lpa_feat_content_types_and_taxonomies
 dependencies[] = lpa_feat_themes_panel
 dependencies[] = lpa_feat_home_page_views
 dependencies[] = lpa_feat_internal_views
-dependencies[] = lpa_feat_blocchi_statici
 dependencies[] = lpa_feat_home_blocks
+dependencies[] = lpa_feat_blocchi_statici
 
 
 files[] = linkedpa.profile
