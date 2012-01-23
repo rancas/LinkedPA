@@ -297,7 +297,7 @@ fwrite($fh, "field_tipo_pagina is set \n");
 	$voc = "tipo_di_pagina";
 	$tid = _get_term_from_name($item_arr['field_tipo_pagina'], $voc);
 fwrite($fh, "Generica tid is " . $tid . "\n");
-	//$node->field_tipo_pagina[$node->language][]['tid'] = $tid;
+	$node->field_tipo_pagina[$node->language][]['tid'] = $tid;
     }
 
 fclose($fh);
