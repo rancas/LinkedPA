@@ -282,10 +282,14 @@ function linkedpa_batch_create_nodes_batch(&$context) {
     $node->body[$node->language][0]['format'] = 'filtered_html';
     $node->path = array('pathauto' => 0, 'alias' => $item_arr['path']);
 
-    if (isset($item_arr['field_tipo_pagina'])) {
-
 $myFile = "linkedpa_profile_debug.txt";
 $fh = fopen($myFile, 'a') or die("can't open file");
+
+fwrite($fh, "trying ... field_tipo_pagina is set \n");
+
+    if (isset($item_arr['field_tipo_pagina'])) {
+
+
 fwrite($fh, "field_tipo_pagina is set \n");
 
 
