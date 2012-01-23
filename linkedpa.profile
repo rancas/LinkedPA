@@ -107,6 +107,12 @@ function linkedpa_config_vars() {
   variable_set('site_default_country', 'IT');
   variable_set('date_default_timezone', 'Europe/Rome');
   variable_set('date_first_day', '1'); // Monday
+
+  // Date and time types / formats
+  // [admin/config/regional/date-time]
+  //variable_set('date_format_long', 'l, j. F Y - G:i');
+  //variable_set('date_format_medium', 'j. F Y - G:i');
+  //variable_set('date_format_short', 'd.m.Y - H:i');
       
   // Keep errors in the log and off the screen
   variable_set('error_level', 0);
@@ -254,6 +260,12 @@ function linkedpa_batch_create_nodes_batch(&$context) {
     $node->body[$node->language][0]['summary'] = $item_arr['body'];
     $node->body[$node->language][0]['format'] = 'filtered_html';
     $node->path = array('pathauto' => 0, 'alias' => $item_arr['path']);
+
+    if (isset($item_arr['field_tipo_pagina'])) {
+	$voc = "tipo_di_pagina";
+	$tid = _get_term_from_name($item_arr['field_tipo_pagina'], $voc);
+	$node->field_tipo_pagina[$node->language][]['tid'] = $tid;
+    }
 
     // Save node
     if($node = node_submit($node)) { // Prepare node for saving

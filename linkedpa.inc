@@ -1,6 +1,28 @@
 <?php
 
 /**
+ * Helper function to dynamically get the tid from the term_name
+ *
+ * @param $term_name Term name
+ * @param $vocabulary_name Name of the vocabulary to search the term in
+ *
+ * @return Term id of the found term or else FALSE
+ */
+function _get_term_from_name($term_name, $vocabulary_name) {
+  if ($vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name)) {
+    $tree = taxonomy_get_tree($vocabulary->vid);
+    foreach ($tree as $term) {
+      if ($term->name == $term_name) {
+        return $term->tid;
+      }
+    }
+  }
+
+  return FALSE;
+}
+
+
+/**
  * Return menus.
  */
 function _get_menus() {
@@ -106,7 +128,7 @@ function _get_nodes_and_menu_items() {
       'title' => 'Credits',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('footer-menu'),
-      //'field_tipo_pagina' => 'Generica', //TODO non funzia...
+      'field_tipo_pagina' => 'Generica',
     ),
     'user' => array(
       'path' => 'user',
