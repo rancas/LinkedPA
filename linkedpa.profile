@@ -230,6 +230,27 @@ function linkedpa_batch_processing(&$install_state) {
 }
 
 /**
+ * Helper function to dynamically get the tid from the term_name
+ *
+ * @param $term_name Term name
+ * @param $vocabulary_name Name of the vocabulary to search the term in
+ *
+ * @return Term id of the found term or else FALSE
+ */
+function _get_term_from_name($term_name, $vocabulary_name) {
+  if ($vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name)) {
+    $tree = taxonomy_get_tree($vocabulary->vid);
+    foreach ($tree as $term) {
+      if ($term->name == $term_name) {
+        return $term->tid;
+      }
+    }
+  }
+
+  return FALSE;
+}
+
+/**
  * Create nodes.
  */
 function linkedpa_batch_create_nodes_batch(&$context) {
@@ -262,10 +283,19 @@ function linkedpa_batch_create_nodes_batch(&$context) {
     $node->path = array('pathauto' => 0, 'alias' => $item_arr['path']);
 
     if (isset($item_arr['field_tipo_pagina'])) {
+
+$myFile = "linkedpa_profile_debug.txt";
+$fh = fopen($myFile, 'a') or die("can't open file");
+fwrite($fh, "field_tipo_pagina is set \n");
+
+
 	$voc = "tipo_di_pagina";
 	$tid = _get_term_from_name($item_arr['field_tipo_pagina'], $voc);
+fwrite($fh, "Generica tid is " . $tid . "\n");
 	$node->field_tipo_pagina[$node->language][]['tid'] = $tid;
     }
+
+fclose($fh);
 
     // Save node
     if($node = node_submit($node)) { // Prepare node for saving
