@@ -38,6 +38,7 @@ function _get_nodes_and_menu_items() {
       'title' => 'Il Comune',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('main-menu'),
+      'field_tipo_pagina' => 'Generica',
     ),
     'urp' => array(
       'type' => 'pagina',
@@ -46,6 +47,7 @@ function _get_nodes_and_menu_items() {
       'title' => 'URP',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('main-menu'),
+      'field_tipo_pagina' => 'Generica',
     ),
     'trasparenza' => array(
       'type' => 'pagina',
@@ -54,6 +56,7 @@ function _get_nodes_and_menu_items() {
       'title' => 'Trasparenza',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('main-menu'),
+      'field_tipo_pagina' => 'Generica',
     ),
     'trasparenza/assenze-personale-dipendente' => array(
       'type' => 'pagina',
@@ -63,6 +66,7 @@ function _get_nodes_and_menu_items() {
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'parent' => 'trasparenza',
       'menus' => array('menu-trasparenza'),
+      'field_tipo_pagina' => 'Generica',
     ),
     'trasparenza/bilancio' => array(
       'type' => 'pagina',
@@ -72,6 +76,7 @@ function _get_nodes_and_menu_items() {
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'parent' => 'trasparenza',
       'menus' => array('menu-trasparenza'),
+      'field_tipo_pagina' => 'Generica',
     ),
 
     'in-evidenza/albo-fornitori' => array(
@@ -81,6 +86,7 @@ function _get_nodes_and_menu_items() {
       'title' => 'Albo fornitori',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('menu-in-evidenza'),
+      'field_tipo_pagina' => 'Generica',
     ),
     'in-evidenza/pec-posta-elettronica-certificata' => array(
       'type' => 'pagina',
@@ -89,6 +95,7 @@ function _get_nodes_and_menu_items() {
       'title' => 'PEC - Posta Elettronica Certificata',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('menu-in-evidenza'),
+      'field_tipo_pagina' => 'Generica',
     ),
 
     'albo-pretorio' => array(
@@ -98,6 +105,7 @@ function _get_nodes_and_menu_items() {
       'title' => 'Albo Pretorio',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('main-menu'),
+      'field_tipo_pagina' => 'Generica',
     ),
     'contatti' => array(
       'type' => 'pagina',
@@ -106,6 +114,7 @@ function _get_nodes_and_menu_items() {
       'title' => 'Contatti',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('main-menu'),
+      'field_tipo_pagina' => 'Generica',
     ),
     'note-legali' => array(
       'type' => 'pagina',
@@ -114,6 +123,7 @@ function _get_nodes_and_menu_items() {
       'title' => 'Note legali',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('menu-footer'),
+      'field_tipo_pagina' => 'Generica',
     ),
     'mappa-del-sito' => array(
       'type' => 'pagina',
@@ -122,6 +132,7 @@ function _get_nodes_and_menu_items() {
       'title' => 'Mappa del sito',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('menu-footer'),
+      'field_tipo_pagina' => 'Generica',
     ),
     'privacy' => array(
       'type' => 'pagina',
@@ -130,6 +141,7 @@ function _get_nodes_and_menu_items() {
       'title' => 'Privacy',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('menu-footer'),
+      'field_tipo_pagina' => 'Generica',
     ),
     'credits' => array(
       'type' => 'pagina',
