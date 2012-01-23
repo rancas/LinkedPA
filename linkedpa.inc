@@ -138,7 +138,7 @@ function _get_nodes_and_menu_items() {
       'title' => 'Credits',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('menu-footer'),
-      //'field_tipo_pagina' => 'Generica',
+      'field_tipo_pagina' => 'Generica',
     ),
     'user' => array(
       'path' => 'user',
