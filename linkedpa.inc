@@ -16,9 +16,9 @@ function _get_menus() {
 	'title' => 'Menu in evidenza',
 	'description' => 'il menu per in evidenza'
 	),
-    'footer' => array(
-	'menu_name' => 'footer-menu',
-	'title' => 'Footer menu',
+    'menu-footer' => array(
+	'menu_name' => 'menu-footer',
+	'title' => 'Menu per il footer',
 	'description' => 'il menu del footer'
 	),
   );
@@ -113,7 +113,7 @@ function _get_nodes_and_menu_items() {
       'path' => 'note-legali',
       'title' => 'Note legali',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
-      'menus' => array('footer-menu'),
+      'menus' => array('menu-footer'),
     ),
     'mappa-del-sito' => array(
       'type' => 'pagina',
@@ -121,7 +121,7 @@ function _get_nodes_and_menu_items() {
       'path' => 'mappa-del-sito',
       'title' => 'Mappa del sito',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
-      'menus' => array('footer-menu'),
+      'menus' => array('menu-footer'),
     ),
     'privacy' => array(
       'type' => 'pagina',
@@ -129,7 +129,7 @@ function _get_nodes_and_menu_items() {
       'path' => 'privacy',
       'title' => 'Privacy',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
-      'menus' => array('footer-menu'),
+      'menus' => array('menu-footer'),
     ),
     'credits' => array(
       'type' => 'pagina',
@@ -137,13 +137,13 @@ function _get_nodes_and_menu_items() {
       'path' => 'credits',
       'title' => 'Credits',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
-      'menus' => array('footer-menu'),
+      'menus' => array('menu-footer'),
       //'field_tipo_pagina' => 'Generica',
     ),
     'user' => array(
       'path' => 'user',
       'title' => 'Area riservata',
-      'menus' => array('footer-menu'),
+      'menus' => array('menu-footer'),
     ),
 
   );
