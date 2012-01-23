@@ -282,6 +282,7 @@ function linkedpa_batch_create_nodes_batch(&$context) {
     $node->body[$node->language][0]['format'] = 'filtered_html';
     $node->path = array('pathauto' => 0, 'alias' => $item_arr['path']);
 
+/*
 $myFile = "linkedpa_profile_debug.txt";
 $fh = fopen($myFile, 'a') or die("can't open file");
 
@@ -300,6 +301,7 @@ fwrite($fh, "Generica tid is " . $tid . "\n");
     }
 
 fclose($fh);
+*/
 
     // Save node
     if($node = node_submit($node)) { // Prepare node for saving

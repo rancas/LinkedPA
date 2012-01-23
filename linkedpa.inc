@@ -6,10 +6,15 @@
 function _get_menus() {
   // Define new menus
   $menus = array(
-    'horizontal' => array(
-	'menu_name' => 'horizontal-menu',
-	'title' => 'Horizontal menu',
-	'description' => 'il menu orizzontale'
+    'menu-trasparenza' => array(
+	'menu_name' => 'menu-trasparenza',
+	'title' => 'Menu per trasparenza',
+	'description' => 'il menu per la trasparenza'
+	),
+    'menu-in-evidenza' => array(
+	'menu_name' => 'menu-in-evidenza',
+	'title' => 'Menu in evidenza',
+	'description' => 'il menu per in evidenza'
 	),
     'footer' => array(
 	'menu_name' => 'footer-menu',
@@ -57,8 +62,35 @@ function _get_nodes_and_menu_items() {
       'title' => 'Assenze personale dipendente',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'parent' => 'trasparenza',
-      'menus' => array('main-menu'),
+      'menus' => array('menu-trasparenza'),
     ),
+    'trasparenza/bilancio' => array(
+      'type' => 'pagina',
+      'uid' => 1,
+      'path' => 'trasparenza/bilancio',
+      'title' => 'Bilancio',
+      'body' => '<p>Puoi modificare questo testo di esempio.</p>',
+      'parent' => 'trasparenza',
+      'menus' => array('menu-trasparenza'),
+    ),
+
+    'in-evidenza/albo-fornitori' => array(
+      'type' => 'pagina',
+      'uid' => 1,
+      'path' => 'in-evidenza/albo-fornitori',
+      'title' => 'Albo fornitori',
+      'body' => '<p>Puoi modificare questo testo di esempio.</p>',
+      'menus' => array('menu-in-evidenza'),
+    ),
+    'in-evidenza/pec-posta-elettronica-certificata' => array(
+      'type' => 'pagina',
+      'uid' => 1,
+      'path' => 'in-evidenza/pec-posta-elettronica-certificata',
+      'title' => 'PEC - Posta Elettronica Certificata',
+      'body' => '<p>Puoi modificare questo testo di esempio.</p>',
+      'menus' => array('menu-in-evidenza'),
+    ),
+
     'albo-pretorio' => array(
       'type' => 'pagina',
       'uid' => 1,
@@ -106,7 +138,7 @@ function _get_nodes_and_menu_items() {
       'title' => 'Credits',
       'body' => '<p>Puoi modificare questo testo di esempio.</p>',
       'menus' => array('footer-menu'),
-      'field_tipo_pagina' => 'Generica',
+      //'field_tipo_pagina' => 'Generica',
     ),
     'user' => array(
       'path' => 'user',
