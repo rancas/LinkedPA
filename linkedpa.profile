@@ -282,8 +282,8 @@ function linkedpa_batch_create_nodes_batch(&$context) {
     $node->body[$node->language][0]['format'] = 'filtered_html';
     $node->path = array('pathauto' => 0, 'alias' => $item_arr['path']);
 
-/*
-$myFile = "linkedpa_profile_debug.txt";
+
+$myFile = "linkedpa-node_profile_debug.txt";
 $fh = fopen($myFile, 'a') or die("can't open file");
 
 fwrite($fh, "trying ... field_tipo_pagina is set \n");
@@ -297,11 +297,11 @@ fwrite($fh, "field_tipo_pagina is set \n");
 	$voc = "tipo_di_pagina";
 	$tid = _get_term_from_name($item_arr['field_tipo_pagina'], $voc);
 fwrite($fh, "Generica tid is " . $tid . "\n");
-	$node->field_tipo_pagina[$node->language][]['tid'] = $tid;
+	//$node->field_tipo_pagina[$node->language][]['tid'] = $tid;
     }
 
 fclose($fh);
-*/
+
 
     // Save node
     if($node = node_submit($node)) { // Prepare node for saving
