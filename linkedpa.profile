@@ -32,8 +32,47 @@ function linkedpa_install_tasks() {
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
     ),
     'linkedpa_config_vars' => array(),
+    'linkedpa_add_taxonomy_images' => array (
+      'display_name' => st('Adding Taxonomy Images'),
+      'display' => TRUE,
+      'type' => 'batch',
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+    ),
   );
   return $tasks;
+}
+
+/**
+ * Cycles through vocabularies looking for the appropriate match and uploads
+ * images to the terms in that vocabulary.
+ * Note: The image is currently always the same 
+ */
+function linkedpa_add_taxonomy_images(){
+  // Load all vocabularies and look for the Tema vocabular
+  $vocabularies = taxonomy_get_vocabularies();
+  
+  foreach ($vocabularies as $vocabulary) {
+    if ($vocabulary->name == 'Tema'){
+      $tema = taxonomy_get_tree($vocabulary->vid);
+
+      foreach ($tema as $term) {
+        // Load the full object so that the field setting can work
+        $term_obj = taxonomy_term_load($term->tid);
+        // Load the file and create a file object        
+        $file_path = drupal_realpath('profiles/linkedpa/logo.png');
+        $file = (object) array(
+          'uid' => 1,
+          'uri' => $file_path,
+          'filemime' => file_get_mimetype($file_path),
+          'status' => 1,
+        );
+
+        $file = file_copy($file, 'public://');
+        $term_obj->field_image_theme['und'][0] = (array) $file;
+        taxonomy_term_save($term_obj);
+      }
+    }
+  }
 }
 
 function linkedpa_config_vars() {
@@ -287,9 +326,9 @@ function linkedpa_batch_create_nodes_batch(&$context) {
     $node->path = array('pathauto' => 0, 'alias' => $item_arr['path']);
 
     if (isset($item_arr['field_tipo_pagina'])) {
-	$voc = "tipo_di_pagina";
-	$tid = _get_term_from_name($item_arr['field_tipo_pagina'], $voc);
-	$node->field_tipo_pagina[$node->language][]['tid'] = $tid;
+  $voc = "tipo_di_pagina";
+  $tid = _get_term_from_name($item_arr['field_tipo_pagina'], $voc);
+  $node->field_tipo_pagina[$node->language][]['tid'] = $tid;
     }
 
     // Save node
