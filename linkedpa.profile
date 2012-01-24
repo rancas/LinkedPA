@@ -61,6 +61,12 @@ function linkedpa_add_taxonomy_images(){
         // Load the file and create a file object        
         //$file_path = drupal_realpath('profiles/linkedpa/logo.png');
 	$file_path = drupal_realpath('profiles/linkedpa/img/' . $term->name);
+
+$myFile = "linkedpa_add_taxonomy_images_debug.txt";
+$fh = fopen($myFile, 'a') or die("can't open file");
+fwrite($fh, "add img:" . $term->name . " --> filepath: " . $file_path . "\n");
+fclose($fh);
+
 	if (!$file_path) {
 	    $file_path = drupal_realpath('profiles/linkedpa/img/default.png');
 	}
