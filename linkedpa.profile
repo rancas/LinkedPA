@@ -109,10 +109,14 @@ function linkedpa_config_vars() {
   variable_set('date_first_day', '1'); // Monday
 
   // Date and time types / formats
-  // [admin/config/regional/date-time]
-  //variable_set('date_format_long', 'l, j. F Y - G:i');
-  //variable_set('date_format_medium', 'j. F Y - G:i');
-  //variable_set('date_format_short', 'd.m.Y - H:i');
+  variable_set('configurable_timezones', 0);
+
+  variable_set('date_format_short', 'd/m/Y - H:i');
+  variable_set('date_format_short_custom', 'd/m/Y - H:i');
+  variable_set('date_format_media', 'D, d/m/Y - H:i');
+  variable_set('date_format_media_custom', 'D, d/m/Y - H:i');
+  variable_set('date_format_long', 'l, j F, Y - H:i');
+  variable_set('date_format_long_custom', 'l, j F, Y - H:i');
       
   // Keep errors in the log and off the screen
   variable_set('error_level', 0);
