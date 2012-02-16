@@ -300,12 +300,12 @@ function linkedpa_import_vocabulary($voc, &$context) {
   // Import terms for each voc, where a .csv file exits.
   $filename = $import_dir . $voc->machine_name . '.csv';
 
-
+/* Debug stuff
 $myFile = "linkedpa_profile_debug.txt";
 $fh = fopen($myFile, 'a') or die("can't open file");
 fwrite($fh, "add " . $filename . "\n");
 fclose($fh);
-
+*/
 
   if (!file_exists($filename)) {
     return;
