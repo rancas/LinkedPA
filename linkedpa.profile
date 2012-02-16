@@ -65,8 +65,11 @@ function linkedpa_add_taxonomy_images(){
         // Load the full object so that the field setting can work
         $term_obj = taxonomy_term_load($term->tid);
         // Load the file and create a file object        
-        //$file_path = drupal_realpath('profiles/linkedpa/logo.png');
-	$file_path = drupal_realpath('profiles/linkedpa/img/' . $term->name);
+        $file_path = drupal_realpath('profiles/linkedpa/logo.png');
+/*
+Dovrebbe essere qualcosa del genere - Mauro.
+ 
+	$file_path = drupal_realpath('profiles/linkedpa/img/' . str_replace(" ", "-", $term->name));
 
 $myFile = "linkedpa_add_taxonomy_images_debug.txt";
 $fh = fopen($myFile, 'a') or die("can't open file");
@@ -76,6 +79,7 @@ fclose($fh);
 	if (!$file_path) {
 	    $file_path = drupal_realpath('profiles/linkedpa/img/default.png');
 	}
+*/
 
         $file = (object) array(
           'uid' => 1,
