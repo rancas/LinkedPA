@@ -24,12 +24,14 @@ function linkedpa_install_tasks() {
       'type' => 'batch',
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
     ),
+    /*
     'linkedpa_create_theme_pages' => array(
       'display_name' => st('Create theme pages'),
       'display' => TRUE,
       'type' => 'batch',
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
     ),
+    */
     'linkedpa_create_menus' => array(),
     'linkedpa_batch_processing' => array(
       'display_name' => st('Install LinkedPA'),
@@ -51,12 +53,12 @@ function linkedpa_install_tasks() {
 /**
  * Cycles through vocabularies looking for the appropriate match and uploads
  * images to the terms in that vocabulary.
- * Note: The image is currently always the same 
+ * Note: The image is currently always the same
  */
 function linkedpa_add_taxonomy_images(){
   // Load all vocabularies and look for the Tema vocabular
   $vocabularies = taxonomy_get_vocabularies();
-  
+
   foreach ($vocabularies as $vocabulary) {
     if ($vocabulary->name == 'Tema'){
       $tema = taxonomy_get_tree($vocabulary->vid);
@@ -64,11 +66,11 @@ function linkedpa_add_taxonomy_images(){
       foreach ($tema as $term) {
         // Load the full object so that the field setting can work
         $term_obj = taxonomy_term_load($term->tid);
-        // Load the file and create a file object        
+        // Load the file and create a file object
         $file_path = drupal_realpath('profiles/linkedpa/logo.png');
 /*
 Dovrebbe essere qualcosa del genere - Mauro.
- 
+
 	$file_path = drupal_realpath('profiles/linkedpa/img/' . str_replace(" ", "-", $term->name));
 
 $myFile = "linkedpa_add_taxonomy_images_debug.txt";
@@ -118,14 +120,14 @@ function linkedpa_create_theme_pages() {
 
   // Load all vocabularies and look for the Tema vocabular
   $vocabularies = taxonomy_get_vocabularies();
-  
+
   foreach ($vocabularies as $vocabulary) {
     if ($vocabulary->name == 'Tema') {
       $tema = taxonomy_get_tree($vocabulary->vid);
 
       foreach ($tema as $term) {
         foreach ($pages as $key => $page) {
-        
+
           $node = new stdClass();
           $node->type = $page['type'];
           node_object_prepare($node);
@@ -135,18 +137,18 @@ function linkedpa_create_theme_pages() {
           $node->language = LANGUAGE_NONE;
           $node->uid = 1; //admin
           $node->sticky = 1; //actually we are using sticky nodes in the views of the themes - Remove it if this case change.
-          
+
           $node->body[$node->language][0]['value'] =  $page['body'];
           $node->body[$node->language][0]['summary'] = $page['body'];
           $node->body[$node->language][0]['format'] = 'filtered_html';
-          
+
           $path = $key . "-" . str_replace(" ", "-", $term->name);
           $node->path = array('pathauto' => 0, 'alias' => $path);
 
           $tp_voc = "tipo_di_pagina";
           $tp_tid = _get_term_from_name($page['field_tipo_pagina'], $tp_voc);
           $node->field_tipo_pagina[$node->language][]['tid'] = $tp_tid;
-          
+
           //associate each page with each theme
           $node->field_theme[$node->language][]['tid'] = $term->tid;
 
@@ -159,7 +161,7 @@ $myFile = "linkedpa_add_related_pages_to_themes.txt";
 $fh = fopen($myFile, 'a') or die("can't open file");
 fwrite($fh, "add node:" . $node->nid . "\n");
 fclose($fh);
-        
+
         }
 
       }
@@ -248,7 +250,7 @@ function linkedpa_config_vars() {
   variable_set('date_format_media_custom', 'D, d/m/Y - H:i');
   variable_set('date_format_long', 'l, j F, Y - H:i');
   variable_set('date_format_long_custom', 'l, j F, Y - H:i');
-      
+
   // Keep errors in the log and off the screen
   variable_set('error_level', 0);
 }
