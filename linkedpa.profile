@@ -116,57 +116,44 @@ function linkedpa_create_theme_pages() {
     ),
   );
 
-  // Load all vocabularies and look for the Tema vocabular
-  $vocabularies = taxonomy_get_vocabularies();
+  // Load all terms of the 'Tema' vocabulary
+  if ($vocabulary = taxonomy_vocabulary_machine_name_load('Tema')) {
+    $tree = taxonomy_get_tree($vocabulary->vid);
+    foreach ($tree as $term) {
+      foreach ($pages as $key => $page) {
+        $node = new stdClass();
+        $node->type = $page['type'];
+        node_object_prepare($node);
 
-  foreach ($vocabularies as $vocabulary) {
+        // Initialize node fields
+        $node->title = $page['title'] . " ({$term->name})";
+        $node->language = LANGUAGE_NONE;
+        $node->uid = 1; //admin
+        $node->sticky = 1; //actually we are using sticky nodes in the views of the themes - Remove it if this case change.
 
-    $myFile = "linkedpa_add_related_pages_to_themes.txt";
-$fh = fopen($myFile, 'a') or die("can't open file");
-fwrite($fh, " --- vocabulary->name:" . $vocabulary->name . "\n");
-fclose($fh);
+        $node->body[$node->language][0]['value'] =  $page['body'];
+        $node->body[$node->language][0]['summary'] = $page['body'];
+        $node->body[$node->language][0]['format'] = 'filtered_html';
 
-    if ($vocabulary->name == 'tema') {
-      $tema = taxonomy_get_tree($vocabulary->vid);
+        $path = $key . "-" . str_replace(" ", "-", $term->name);
+        $node->path = array('pathauto' => 0, 'alias' => $path);
 
-      foreach ($tema as $term) {
-        foreach ($pages as $key => $page) {
+        $tp_voc = "tipo_di_pagina";
+        $tp_tid = _get_term_from_name($page['field_tipo_pagina'], $tp_voc);
+        $node->field_tipo_pagina[$node->language][]['tid'] = $tp_tid;
 
-          $node = new stdClass();
-          $node->type = $page['type'];
-          node_object_prepare($node);
+        //associate each page with each theme
+        $node->field_theme[$node->language][]['tid'] = $term->tid;
 
-          // Initialize node fields
-          $node->title = $page['title'] . " ({$term->name})";
-          $node->language = LANGUAGE_NONE;
-          $node->uid = 1; //admin
-          $node->sticky = 1; //actually we are using sticky nodes in the views of the themes - Remove it if this case change.
-
-          $node->body[$node->language][0]['value'] =  $page['body'];
-          $node->body[$node->language][0]['summary'] = $page['body'];
-          $node->body[$node->language][0]['format'] = 'filtered_html';
-
-          $path = $key . "-" . str_replace(" ", "-", $term->name);
-          $node->path = array('pathauto' => 0, 'alias' => $path);
-
-          $tp_voc = "tipo_di_pagina";
-          $tp_tid = _get_term_from_name($page['field_tipo_pagina'], $tp_voc);
-          $node->field_tipo_pagina[$node->language][]['tid'] = $tp_tid;
-
-          //associate each page with each theme
-          $node->field_theme[$node->language][]['tid'] = $term->tid;
-
-          // Save node
-          if($node = node_submit($node)) { // Prepare node for saving
-            node_save($node);
-          }
+        // Save node
+        if($node = node_submit($node)) { // Prepare node for saving
+          node_save($node);
+        }
 
 $myFile = "linkedpa_add_related_pages_to_themes.txt";
 $fh = fopen($myFile, 'a') or die("can't open file");
 fwrite($fh, "add node:" . $node->nid . "\n");
 fclose($fh);
-
-        }
 
       }
     }
