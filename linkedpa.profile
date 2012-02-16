@@ -65,21 +65,12 @@ function linkedpa_add_taxonomy_images(){
         // Load the full object so that the field setting can work
         $term_obj = taxonomy_term_load($term->tid);
         // Load the file and create a file object
-        $file_path = drupal_realpath('profiles/linkedpa/logo.png');
-/*
-Dovrebbe essere qualcosa del genere - Mauro.
+        //$file_path = drupal_realpath('profiles/linkedpa/logo.png');
 
-	$file_path = drupal_realpath('profiles/linkedpa/img/' . str_replace(" ", "-", $term->name));
-
-$myFile = "linkedpa_add_taxonomy_images_debug.txt";
-$fh = fopen($myFile, 'a') or die("can't open file");
-fwrite($fh, "add img:" . $term->name . " --> filepath: " . $file_path . "\n");
-fclose($fh);
-
-	if (!$file_path) {
-	    $file_path = drupal_realpath('profiles/linkedpa/img/default.png');
-	}
-*/
+        $file_path = drupal_realpath('profiles/linkedpa/img/' . str_replace(" ", "-", strtolower($term->name)) . '.png');
+      	if (!$file_path) {
+      	    $file_path = drupal_realpath('profiles/linkedpa/logo.png');
+      	}
 
         $file = (object) array(
           'uid' => 1,
@@ -98,6 +89,7 @@ fclose($fh);
 
 /**
  * Create pages related to each term in the vocabulary "Tema"
+ * Note: vocabulary name's "Tema" is defined via feature
  */
 function linkedpa_create_theme_pages() {
   //define which pages will be associated to each theme
@@ -135,7 +127,7 @@ function linkedpa_create_theme_pages() {
         $node->body[$node->language][0]['summary'] = $page['body'];
         $node->body[$node->language][0]['format'] = 'filtered_html';
 
-        $path = $key . "-" . str_replace(" ", "-", $term->name);
+        $path = $key . "-" . str_replace(" ", "-", strtolower($term->name));
         $node->path = array('pathauto' => 0, 'alias' => $path);
 
         $tp_voc = "tipo_di_pagina";
@@ -149,12 +141,6 @@ function linkedpa_create_theme_pages() {
         if($node = node_submit($node)) { // Prepare node for saving
           node_save($node);
         }
-
-$myFile = "linkedpa_add_related_pages_to_themes.txt";
-$fh = fopen($myFile, 'a') or die("can't open file");
-fwrite($fh, "add node:" . $node->nid . "\n");
-fclose($fh);
-
       }
     }
   }
@@ -298,12 +284,12 @@ function linkedpa_import_vocabulary($voc, &$context) {
   // Import terms for each voc, where a .csv file exits.
   $filename = $import_dir . $voc->machine_name . '.csv';
 
-/* Debug stuff
-$myFile = "linkedpa_profile_debug.txt";
-$fh = fopen($myFile, 'a') or die("can't open file");
-fwrite($fh, "add " . $filename . "\n");
-fclose($fh);
-*/
+  /* Debug stuff
+  $myFile = "linkedpa_profile_debug.txt";
+  $fh = fopen($myFile, 'a') or die("can't open file");
+  fwrite($fh, "add " . $filename . "\n");
+  fclose($fh);
+  */
 
   if (!file_exists($filename)) {
     return;
@@ -411,9 +397,9 @@ function linkedpa_batch_create_nodes_batch(&$context) {
     $node->path = array('pathauto' => 0, 'alias' => $item_arr['path']);
 
     if (isset($item_arr['field_tipo_pagina'])) {
-  $voc = "tipo_di_pagina";
-  $tid = _get_term_from_name($item_arr['field_tipo_pagina'], $voc);
-  $node->field_tipo_pagina[$node->language][]['tid'] = $tid;
+      $voc = "tipo_di_pagina";
+      $tid = _get_term_from_name($item_arr['field_tipo_pagina'], $voc);
+      $node->field_tipo_pagina[$node->language][]['tid'] = $tid;
     }
 
     // Save node
@@ -428,7 +414,8 @@ function linkedpa_batch_create_nodes_batch(&$context) {
 
   if ($context['sandbox']['progress'] != $context['sandbox']['max']) {
     $context['finished'] = $context['sandbox']['progress'] / $context['sandbox']['max'];
-  } else {
+  }
+  else {
     variable_set('linkedpa_nodes_and_menu_items', $items);
   }
 }
@@ -459,11 +446,14 @@ function linkedpa_batch_create_menu_items_batch(&$context) {
         'weight' => isset($item_arr['weight']) ? $item_arr['weight'] : 0,
       );
       $item['menu_name'] = $menu;
+
       if (isset($item_arr['parent']) && isset($items[$item_arr['parent']][$menu . '.mlid'])) {
         $item['plid'] = $items[$item_arr['parent']][$menu . '.mlid'];
-      } else {
+      }
+      else {
         $item['expanded'] = true;
       }
+
       if ($mlid = menu_link_save($item)) {
         $items[$key][$menu . '.mlid'] = $mlid;
       }
@@ -475,7 +465,8 @@ function linkedpa_batch_create_menu_items_batch(&$context) {
 
   if ($context['sandbox']['progress'] != $context['sandbox']['max']) {
     $context['finished'] = $context['sandbox']['progress'] / $context['sandbox']['max'];
-  } else {
+  }
+  else {
     menu_rebuild();
     variable_del('linkedpa_nodes_and_menu_items');
   }
