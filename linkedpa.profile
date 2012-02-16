@@ -154,6 +154,11 @@ function linkedpa_create_theme_pages() {
           if($node = node_submit($node)) { // Prepare node for saving
             node_save($node);
           }
+
+$myFile = "linkedpa_add_related_pages_to_themes.txt";
+$fh = fopen($myFile, 'a') or die("can't open file");
+fwrite($fh, "add node:" . $node->nid . "\n");
+fclose($fh);
         
         }
 
