@@ -24,14 +24,6 @@ function linkedpa_install_tasks() {
       'type' => 'batch',
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
     ),
-    /*
-    'linkedpa_create_theme_pages' => array(
-      'display_name' => st('Create theme pages'),
-      'display' => TRUE,
-      'type' => 'batch',
-      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
-    ),
-    */
     'linkedpa_create_menus' => array(),
     'linkedpa_batch_processing' => array(
       'display_name' => st('Install LinkedPA'),
@@ -42,6 +34,12 @@ function linkedpa_install_tasks() {
     'linkedpa_config_vars' => array(),
     'linkedpa_add_taxonomy_images' => array (
       'display_name' => st('Adding Taxonomy Images'),
+      'display' => TRUE,
+      'type' => 'batch',
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+    ),
+    'linkedpa_create_theme_pages' => array(
+      'display_name' => st('Create theme pages'),
       'display' => TRUE,
       'type' => 'batch',
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
