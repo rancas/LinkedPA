@@ -120,7 +120,13 @@ function linkedpa_create_theme_pages() {
   $vocabularies = taxonomy_get_vocabularies();
 
   foreach ($vocabularies as $vocabulary) {
-    if ($vocabulary->name == 'Tema') {
+
+    $myFile = "linkedpa_add_related_pages_to_themes.txt";
+$fh = fopen($myFile, 'a') or die("can't open file");
+fwrite($fh, " --- vocabulary->name:" . $vocabulary->name . "\n");
+fclose($fh);
+
+    if ($vocabulary->name == 'tema') {
       $tema = taxonomy_get_tree($vocabulary->vid);
 
       foreach ($tema as $term) {
