@@ -65,13 +65,13 @@ function linkedpa_add_taxonomy_images(){
         // Load the full object so that the field setting can work
         $term_obj = taxonomy_term_load($term->tid);
         // Load the file and create a file object
-        //$file_path = drupal_realpath('profiles/linkedpa/logo.png');
-
+        $file_path = drupal_realpath('profiles/linkedpa/logo.png');
+/*
         $file_path = drupal_realpath('profiles/linkedpa/img/' . str_replace(" ", "-", strtolower($term->name)) . '.png');
       	if (!$file_path) {
       	    $file_path = drupal_realpath('profiles/linkedpa/logo.png');
       	}
-
+*/
         $file = (object) array(
           'uid' => 1,
           'uri' => $file_path,
