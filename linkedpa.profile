@@ -24,6 +24,12 @@ function linkedpa_install_tasks() {
       'type' => 'batch',
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
     ),
+    'linkedpa_create_theme_pages' => array(
+      'display_name' => st('Create theme pages'),
+      'display' => TRUE,
+      'type' => 'batch',
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+    ),
     'linkedpa_create_menus' => array(),
     'linkedpa_batch_processing' => array(
       'display_name' => st('Install LinkedPA'),
@@ -59,8 +65,7 @@ function linkedpa_add_taxonomy_images(){
         // Load the full object so that the field setting can work
         $term_obj = taxonomy_term_load($term->tid);
         // Load the file and create a file object        
-        $file_path = drupal_realpath('profiles/linkedpa/logo.png');
-/*
+        //$file_path = drupal_realpath('profiles/linkedpa/logo.png');
 	$file_path = drupal_realpath('profiles/linkedpa/img/' . $term->name);
 
 $myFile = "linkedpa_add_taxonomy_images_debug.txt";
@@ -71,7 +76,7 @@ fclose($fh);
 	if (!$file_path) {
 	    $file_path = drupal_realpath('profiles/linkedpa/img/default.png');
 	}
-*/
+
         $file = (object) array(
           'uid' => 1,
           'uri' => $file_path,
@@ -82,6 +87,72 @@ fclose($fh);
         $file = file_copy($file, 'public://');
         $term_obj->field_image_theme['und'][0] = (array) $file;
         taxonomy_term_save($term_obj);
+      }
+    }
+  }
+}
+
+/**
+ * Create pages related to each term in the vocabulary "Tema"
+ */
+function linkedpa_create_theme_pages() {
+  //define which pages will be associated to each theme
+  $pages = array (
+    'contatti' => array (
+      'type' => 'pagina',
+      'title' => 'Contatti',
+      'body' => '<p>Pagina in costruzione.</p>',
+      'field_tipo_pagina' => 'Contatti',
+    ),
+    'siti-collegati' => array (
+      'type' => 'pagina',
+      'title' => 'Siti collegati',
+      'body' => '<p>Pagina in costruzione.</p>',
+      'field_tipo_pagina' => 'Siti collegati',
+    ),
+  );
+
+  // Load all vocabularies and look for the Tema vocabular
+  $vocabularies = taxonomy_get_vocabularies();
+  
+  foreach ($vocabularies as $vocabulary) {
+    if ($vocabulary->name == 'Tema') {
+      $tema = taxonomy_get_tree($vocabulary->vid);
+
+      foreach ($tema as $term) {
+        foreach ($pages as $key => $page) {
+        
+          $node = new stdClass();
+          $node->type = $page['type'];
+          node_object_prepare($node);
+
+          // Initialize node fields
+          $node->title = $page['title'] . " ({$term->name})";
+          $node->language = LANGUAGE_NONE;
+          $node->uid = 1; //admin
+          $node->sticky = 1; //actually we are using sticky nodes in the views of the themes - Remove it if this case change.
+          
+          $node->body[$node->language][0]['value'] =  $page['body'];
+          $node->body[$node->language][0]['summary'] = $page['body'];
+          $node->body[$node->language][0]['format'] = 'filtered_html';
+          
+          $path = $key . "-" . str_replace(" ", "-", $term->name);
+          $node->path = array('pathauto' => 0, 'alias' => $path);
+
+          $tp_voc = "tipo_di_pagina";
+          $tp_tid = _get_term_from_name($page['field_tipo_pagina'], $tp_voc);
+          $node->field_tipo_pagina[$node->language][]['tid'] = $tp_tid;
+          
+          //associate each page with each theme
+          $node->field_theme[$node->language][]['tid'] = $term->tid;
+
+          // Save node
+          if($node = node_submit($node)) { // Prepare node for saving
+            node_save($node);
+          }
+        
+        }
+
       }
     }
   }
