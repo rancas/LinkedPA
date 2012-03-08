@@ -1,7 +1,7 @@
 ; $Id: standard.info,v 1.1 2010/01/04 23:08:34 webchick Exp $
 name = LinkedPA
 description = Install LinkedPA distribution.
-version = VERSION
+version = beta1 
 core = 7.x
 
 ; Install the modules from the standard profile.

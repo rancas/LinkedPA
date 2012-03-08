@@ -27,7 +27,7 @@ projects[entity][subdir] = contrib
 projects[entity][version] = 1.0-rc1
 
 projects[entityreference][subdir] = contrib
-projects[entityreference][version] = 1.0-beta3
+projects[entityreference][version] = 1.0-beta5
 
 projects[field_group][subdir] = contrib
 projects[field_group][version] = 1.1
